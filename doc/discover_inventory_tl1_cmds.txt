@@ -1,0 +1,123 @@
+
+WARNING
+This system is restricted to authorized users for business purposes. Unauthorized
+access is a violation of the law. This service may be monitored for administrative
+and security reasons. By proceeding, you consent to this monitoring.
+
+> ACT-USER::CISCO15:100::******;
+
+   Node1 2009-08-10 14:59:33
+M  100 COMPLD
+   "CISCO15:2009-08-10 14-58-56,0"
+;
+
+   Node1 2009-08-10 14:59:33
+A  0 REPT EVT SESSION
+   "Node1:NO,"
+   /* TL1 Agent Copyright (c) 1999-2005, 2007 Cisco Systems, Inc.
+
+WARNING
+This system is restricted to authorized users for business purposes. Unauthorized
+access is a violation of the law. This service may be monitored for administrative
+and security reasons. By proceeding, you consent to this monitoring.
+
+      User CISCO15 logged in from 192.168.2.31 */
+;
+> 
+> 
+
+   Node1 2009-08-10 15:00:12
+A  2734.2734 REPT EVT OC3
+   "FAC-4-1:T-UASL,TC,08-10,15-00-12,NEND,,13,3,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:00:12
+A  2735.2735 REPT EVT OC3
+   "FAC-4-2:T-UASL,TC,08-10,15-00-12,NEND,,13,3,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;RTRV-MAP-NETWORK:::123;
+
+   Node1 2009-08-10 15:07:45
+M  123 COMPLD
+   "192.168.0.101,Node1,ONS15454"
+   "192.168.0.105,Node5,ONS15454"
+   "192.168.0.104,Node4,ONS15454"
+   "192.168.0.103,Node3,ONS15454"
+;
+> 
+> 
+
+   Node1 2009-08-10 15:08:19
+A  2736.2736 REPT EVT OC3
+   "FAC-4-1:T-SEFS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:08:19
+A  2737.2737 REPT EVT OC3
+   "FAC-4-1:T-ESS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:08:19
+A  2738.2738 REPT EVT OC3
+   "FAC-4-1:T-SESS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:08:19
+A  2739.2739 REPT EVT OC3
+   "FAC-4-2:T-SEFS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:08:19
+A  2740.2740 REPT EVT OC3
+   "FAC-4-2:T-ESS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;
+
+   Node1 2009-08-10 15:08:19
+A  2741.2741 REPT EVT OC3
+   "FAC-4-2:T-SESS,TC,08-10,15-08-19,NEND,,500,500,15-MIN:\"Performance Monitor Threshold Crossing Alert\",OC3"
+;ACT-USER:Node5:CISCO15:100::******;
+> 
+
+   Node5 2009-08-10 15:08:28
+M  100 COMPLD
+   "CISCO15:2009-08-10 14-51-36,0"
+;
+> 
+
+   Node5 2009-08-10 15:08:28
+A  0 REPT EVT SESSION
+   "Node5:NO,"
+   /* TL1 Agent Copyright (c) 1999-2005, 2007 Cisco Systems, Inc.
+
+WARNING
+This system is restricted to authorized users for business purposes. Unauthorized
+access is a violation of the law. This service may be monitored for administrative
+and security reasons. By proceeding, you consent to this monitoring.
+
+      User CISCO15 logged in from 192.168.0.101 */
+;RTRV-INV:Node5:ALL:123;
+> 
+
+   Node5 2009-08-10 15:09:01
+M  123 COMPLD
+   "SLOT-1,OC12-IR-1310-1::PN=87-31-00003,HWREV=005H,FWREV=76-99-00011-x02a,SN=003498,CLEI=NOCLEI,PID=N/A,VID=N/A,"
+   "SLOT-2,E100T-12::PN=800-08715-01,HWREV=C0,FWREV=57-4504-01-A0,SN=FAA04489EB6,CLEI=SNP8EM9KAA,PID=N/A,VID=N/A,"
+   "SLOT-3,DS3-12E::PN=800-24894-07,HWREV=C0,FWREV=57-4589-02-A0,SN=CAT10130HY2,CLEI=WMOTBRGAAB,PID=N/A,VID=N/A,"
+   "SLOT-4,OC3-IR-4::PN=800-18574-02,HWREV=B0,FWREV=76-99-00009-005a,SN=SAG070978SU,CLEI=SN98BBMBAB,PID=N/A,VID=N/A,"
+   "SLOT-6,OC48AS-IR-1310::PN=800-24909-03,HWREV=B0,FWREV=57-4361-04,SN=CAT101529EV,CLEI=WM2I200DAA,PID=N/A,VID=N/A,"
+   "SLOT-7,TCC2::PN=800-24766-03,HWREV=A0,FWREV=57-5444-06,SN=CAT09390DY0,CLEI=WMUCAP6FAB,PID=15454-TCC2P,VID=V00 ,"
+   "SLOT-8,XCVT::PN=87-23-00002,HWREV=003E,FWREV=76-99-00068-004b,SN=036329,CLEI=NOCLEI,PID=N/A,VID=N/A,"
+   "SLOT-10,XCVT::PN=800-06588-03,HWREV=C0,FWREV=76-99-00068-004b,SN=FAA0429AJ9X,CLEI=SNUXZW0BAB,PID=N/A,VID=N/A,"
+   "SLOT-11,TCC2::PN=800-24766-06,HWREV=A0,FWREV=57-5444-09,SN=CAT1233A102,CLEI=WMUCA4TFAA,PID=15454-TCC2P,VID=V00 ,"
+   "SLOT-12,OC48AS-IR-1310::PN=800-24909-03,HWREV=B0,FWREV=57-4361-04,SN=CAT10152CH0,CLEI=WM2I200DAA,PID=N/A,VID=N/A,"
+   "BIC-B,BIC-SMB-B::PN=800-06756-04,HWREV=E0,FWREV=,SN=CAT10061FAY,CLEI=SNMK6D0BRA,PID=N/A,VID=N/A,"
+   "BP,15454-SA_HD::PN=800-23890-03,HWREV=B0,FWREV=,SN=SAT101504GU,CLEI=WMMMJ00DRB,PID=15454-SA-HD,VID=SBI,"
+   "AIP,AIP::PN=73-7665-03,HWREV=A0,FWREV=,SN=SMA10115301,CLEI=NOCLEI,PID=N/A,VID=N/A,"
+   "FAN-1,FTA::PN=800-23907-02,HWREV=A1,FWREV=,SN=SAT101503X1,CLEI=WMPQAUEUAA,PID=15454-FTA-3T,VID=V01,"
+;
+> CANC-USER:Node5:CISCO15:124;
+> 
+
+   Node5 2009-08-10 15:09:43
+M  124 COMPLD
+;
+> 

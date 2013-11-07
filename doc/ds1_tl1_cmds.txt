@@ -1,0 +1,81 @@
+
+WARNING
+This system is restricted to authorized users for business purposes. Unauthorized
+access is a violation of the law. This service may be monitored for administrative
+and security reasons. By proceeding, you consent to this monitoring.
+
+> ACT-USER::CISCO15:100::******;
+
+   Site1 2000-04-13 20:54:39
+M  100 COMPLD
+   "CISCO15:2000-04-13 20-54-03,0"
+;
+
+   Site1 2000-04-13 20:54:39
+A  0 REPT EVT SESSION
+   "Site1:NO,"
+   /* TL1 Agent Copyright (c) 1999-2007 Cisco Systems, Inc.
+
+WARNING
+This system is restricted to authorized users for business purposes. Unauthorized
+access is a violation of the law. This service may be monitored for administrative
+and security reasons. By proceeding, you consent to this monitoring.
+
+      User CISCO15 logged in from 192.168.0.50 */
+;
+> 
+> ED-T1::FAC-17-1:100::::IS,AINS;
+
+   Site1 2000-04-13 20:54:51
+M  100 COMPLD
+;
+> 
+> 
+
+   Site1 2000-04-13 20:54:52
+A  51.50 REPT EVT T1
+   "FAC-17-1:AS-MT,CL,04-13,20-54-52,NEND,NA,,,:\"Alarms Suppressed For Maintenance\",DS1"
+;ED-T1::FAC-17-1:100:::LINECDE=B8ZS,FMT=ESF:OOS,MT;
+
+   Site1 2000-04-13 20:55:24
+M  100 COMPLD
+;
+> 
+> 
+
+   Site1 2000-04-13 20:55:24
+A  52.52 REPT EVT T1
+   "FAC-17-1:AS-MT,SC,04-13,20-55-24,NEND,NA,,,:\"Alarms Suppressed For Maintenance\",DS1"
+;OPR-LPBK-T1::FAC-17-1:123::NEND,,,TERMINAL;
+
+   Site1 2000-04-13 20:55:34
+M  123 COMPLD
+;
+> 
+> ED-T1::FAC-17-1:100::::IS,AINS;
+
+   Site1 2000-04-13 20:56:53
+M  100 DENY
+   SROF
+   FAC-17-1
+   /* Invalid State When Loopback Present */
+;
+> 
+> RLS-LPBK-T1::FAC-17-1:123::NEND,,,TERMINAL;
+
+   Site1 2000-04-13 20:58:01
+M  123 COMPLD
+;
+> 
+> ED-T1::FAC-17-1:100::::IS,AINS;
+
+   Site1 2000-04-13 20:58:05
+M  100 COMPLD
+;
+> 
+> 
+
+   Site1 2000-04-13 20:58:06
+A  53.52 REPT EVT T1
+   "FAC-17-1:AS-MT,CL,04-13,20-58-05,NEND,NA,,,:\"Alarms Suppressed For Maintenance\",DS1"
+;

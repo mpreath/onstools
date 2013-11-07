@@ -1,0 +1,72 @@
+Telnet to ip of ONS shelf, port 3083
+
+Login using the ACT-USER command:
+
+> ACT-USER::CISCO15:100::******;
+
+   Node03 2008-07-04 20:18:50
+M  100 COMPLD
+   "CISCO15:2008-07-04 20-14-54,0"
+;
+
+Add VLANS to vlan database:
+
+> ENT-VLAN::VLAN-5:1:::NAME=VLAN5,PROTN=Y;
+
+   Node03 2008-07-04 20:27:46
+M  1 COMPLD
+;
+> 
+
+Change card type to L2 over DWDM
+
+> ED-EQPT::SLOT-1:123:::CARDMODE=GEXP-L2ETH;
+
+   Node03 2008-07-04 22:08:47
+M  123 COMPLD
+;
+
+
+Enable VLAN on trunk ports:
+
+> ENT-NNI-ETH::ETH-1-21-1:1::5;
+
+   Node03 2008-07-04 20:37:14
+M  1 COMPLD
+;
+
+> ENT-NNI-ETH::ETH-1-22-1:1::5;
+
+   Node03 2008-07-04 20:38:04
+M  1 COMPLD
+;
+Multishelf format:
+ENT-NNI-ETH::ETH-2-2-21-1:1::2;
+Removing it:
+DLT-NNI-ETH::ETH-2-2-21-1:1::2;
+
+
+Enable protection on GE-XP and 10G-XP:
+
+> ED-EQPT::SLOT-1:123:::FRPROLE=MASTER,FRPSTATE=ENABLED;
+
+This is the format for multishelf, SLOT-<shelf>-<slot>
+ED-EQPT::SLOT-2-2:123:::FRPROLE=MASTER,FRPSTATE=ENABLED;
+
+Removing master:
+ED-EQPT::SLOT-2-2:123:::FRPROLE=SLAVE;
+
+   Node03 2008-07-04 22:10:26
+M  123 COMPLD
+;
+
+If this is the master, set one of the 10gig ports to blocking
+
+> ED-L2-ETH::ETH-1-22-1:123:::BRIDGESTATE=BLOCKING;
+
+   Node03 2008-07-04 22:15:18
+M  123 COMPLD
+;
+
+
+
