@@ -9,13 +9,13 @@ These scripts are all written using the Python programming language. The scripts
 
 Script Listing
 --------------
-droptest.py - a script for performing add/drop testing with Cisco's ROADM cards.
+droptest.rb - a script for performing add/drop testing with Cisco's ROADM cards.
 
-droptest.py 
+droptest.rb 
 
-xpconfig.py - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
+xpconfig.rb - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
 
-xpconfig.py [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
+xpconfig.rb [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
 -p	This option indicates that the VLANs are protected.
 -m	This option indicates the XP card is the master for protection.
 -v <range>	Specify the range of VLANs to provision on the card.
@@ -27,9 +27,9 @@ xpconfig.py [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <userna
 -d <password>	Password used to access the ONS shelf.
 <ip address>	IP Address of the ONS shelf being accessed.
 
-dsxloop.py - a script for setting up loopbacks on the DS1 and DS3 cards for testing purposes. 
+dsxloop.rb - a script for setting up loopbacks on the DS1 and DS3 cards for testing purposes. 
 
-dsxloop.py [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> [-r] <ip address>
+dsxloop.rb [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> [-r] <ip address>
 -s <shelf #>	If this is a multishelf system, specify the shelf the card is in.
 -l <slot #>	Specify the slot the card is in.
 -t <type>	Specify type of card. (ds1-14,ds1-56,ds3-12, or ds3-48)
@@ -38,16 +38,16 @@ dsxloop.py [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> [-r]
 -r		Use to remove the loopback and put the ports to IS-AINS
 <ip address>	IP Address of the ONS shelf being accessed.
 
-discover.py - a script that displays all of the nodes connected to the node being logged into.
+discover.rb - a script that displays all of the nodes connected to the node being logged into.
 
-discover.py -u <username> -d <password> <ip address>
+discover.rb -u <username> -d <password> <ip address>
 -u		Username used to access the ONS shelf.
 -d		Password used to access the ONS shelf.
 <ip address>	IP address of the ONs shelf being accessed.
 
-inventory.py - a script that connects to all nodes in the network and collects inventories from them - storing them in seperate folders
+inventory.rb - a script that connects to all nodes in the network and collects inventories from them - storing them in seperate folders
 
-inventory.py -u <username> -d <password> <ip address>
+inventory.rb -u <username> -d <password> <ip address>
 -u              Username used to access the ONS shelf.
 -d              Password used to access the ONS shelf.
 <ip address>    IP address of the ONs shelf being accessed.
