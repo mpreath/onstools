@@ -96,7 +96,7 @@ if ($opt_v =~ /[\d-,]+/) {
 }
 
 foreach my $vlan (@vlan_range) {
-  $vlan_cmd = "ENT-VLAN::VLAN-$vlan:1:::NAME=VLAN$vlan";
+  $vlan_cmd = "ENT-VLAN::VLAN-$opt_s-$opt_l-$vlan:1:::NAME=VLAN$vlan";
   if($opt_p) {
     $vlan_cmd = $vlan_cmd . ",PROTN=Y";
   }
