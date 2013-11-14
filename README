@@ -13,9 +13,9 @@ droptest.rb - a script for performing add/drop testing with Cisco's ROADM cards.
 
 droptest.rb 
 
-xpconfig.rb - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
+xpconfig.pl - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
 
-xpconfig.rb [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
+xpconfig.pl [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
 -p	This option indicates that the VLANs are protected.
 -m	This option indicates the XP card is the master for protection.
 -v <range>	Specify the range of VLANs to provision on the card.
