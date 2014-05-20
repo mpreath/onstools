@@ -19,31 +19,37 @@ import telnetlib
 class ONS:
     """A class for connecting to the Cisco ONS 153xx,15454,15600,M6,M12,and NCS platforms
     via TL1 and automating tasks"""
-    
+    @classmethod
     def __init__(self):
         self.tn = telnetlib.Telnet()
         self.logged_in = 0
     
-    def connect(self,host,port,user,pass):
+    @classmethod
+    def connect(self,host,port,user,password):
         self.tn.open(host,port)
         # read until prompt
         
         # execute ACT-USER TL1 command
         # ACT-USER::username:123::password;
         # verify we are logged in successfully
-        
+    @classmethod    
     def send_command(self,cmd):
-        
-        
+        self.tn.write(cmd + "\n")
+        all_results = ""
+        cur_results = self.tn.read_some()
+        while (cur_results != ''):
+            #print cur_results
+            all_results += cur_results
+            cur_results = self.tn.read_some()
+    
         # check the results, return the response
-        return check_results(results)
-    def get_results(self):
-        
+        return self.check_results(all_results)
+    
+    @classmethod
     def disconnect(self):
+        self.tn.close()
     
+    @classmethod
     def check_results(self,results):
-        
-    
-    
-    
-        
+        #verify it was successful, return '' if not, return the results if it is
+        return results
