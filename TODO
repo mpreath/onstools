@@ -1,4 +1,0 @@
-- Test ons.py for proper connectivity and parsing
-- Add command validation into the send_command() and verify_results() methods
-
-
