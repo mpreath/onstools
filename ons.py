@@ -28,13 +28,19 @@ class ONS:
     def connect(self,host,port,user,password):
         self.tn.open(host,port)
         # read until prompt
-        
+        cmd = "ACT-USER::" + user + ":123::" + password + ";"
+        print cmd + "\n"
         # execute ACT-USER TL1 command
-        # ACT-USER::username:123::password;
-        # verify we are logged in successfully
+        results = self.check_results(self.send_command(cmd))
+        
+        if(results != ''):
+            return True
+        else:
+            return False
+        
     @classmethod    
     def send_command(self,cmd):
-        self.tn.write(cmd + "\n")
+        self.tn.write(cmd + "\n\n")
         all_results = ""
         cur_results = self.tn.read_some()
         while (cur_results != ''):
@@ -52,4 +58,7 @@ class ONS:
     @classmethod
     def check_results(self,results):
         #verify it was successful, return '' if not, return the results if it is
-        return results
+        if("COMPLD" in results):
+            return results
+        else:
+            return ''
