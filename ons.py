@@ -29,14 +29,9 @@ class ONS:
         self.tn.open(host,port)
         # read until prompt
         cmd = "ACT-USER::" + user + ":123::" + password + ";"
-        print cmd + "\n"
+        # print cmd
         # execute ACT-USER TL1 command
-        results = self.check_results(self.send_command(cmd))
-        
-        if(results != ''):
-            return True
-        else:
-            return False
+        return(self.check_results(self.send_command(cmd)))
         
     @classmethod    
     def send_command(self,cmd):
