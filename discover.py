@@ -15,24 +15,39 @@
 # You should have received a copy of the GNU General Public License
 # along with onstools.  If not, see <http://www.gnu.org/licenses/>.
 
-import ons
+#!/usr/bin/python
 
-HOST = "192.168.30.2"
-PORT = 3083
-USERNAME = "CISCO15"
-PASSWORD = "otbu+1"
+import sys, getopt, ons
 
-ons = ons.ONS()
-if(ons.connect(HOST,PORT,USERNAME,PASSWORD)):
-    print "Connection to " + HOST + "[" + PORT + "] established"
-else:
-    print "Connection to " + HOST + "[" + PORT + "] failed"
-    exit()
+def main(argv):
+       
+    hostname = ''
+    port = 3083
+    username = ''
+    password = ''
+   
+    try:
+        opts, args = getopt.getopt(argv,"h:u:p:",["hostname=","username=","password="])
+    except getopt.GetoptError:
+        print 'discover.py -h hostname -u <username> -p <password>'
+        sys.exit(2)
     
-results = ons.send_command("RTRV-MAP-NETWORK:::124;")
+    if (len(opts) != 3):
+        print 'discover.py -h hostname -u <username> -p <password>'
+        sys.exit(2)
+    
+    for opt, arg in opts:
+        if opt in ('-h', "--hostname"):
+            hostname = arg
+        elif opt in ("-u", "--username"):
+            username = arg
+        elif opt in ("-p", "--password"):
+            password = arg
+        else:
+            print "nothing"
+          
+    # start script code here
 
 
-
-
-
-ons.disconnect()
+if __name__ == "__main__":
+   main(sys.argv[1:])
