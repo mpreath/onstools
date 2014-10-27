@@ -17,7 +17,7 @@
 
 #!/usr/bin/python
 
-import sys, getopt, ons, time
+import sys, getopt, ons, time, re
 
 def main(argv):
        
@@ -53,10 +53,45 @@ def main(argv):
     #time.sleep(5)
     cmd_results = myons.send_command("RTRV-MAP-NETWORK:::124;")
     if(cmd_results):
-        print cmd_results
+        # lets split the results
+        #print cmd_results
+        matchobj = re.findall('\"(.*),(.*),(.*)\"',cmd_results)
+        print matchobj
+        
     cmd_results = myons.send_command("RTRV-INV::ALL:125;")
+    
     if(cmd_results):
-        print cmd_results
+        #print cmd_results
+        #print cmd_results
+        matchobj = re.findall('\s+\"(.*)\"',cmd_results)
+        for line in matchobj:
+            matchobj2 = re.split(',', line)
+            inv_lookup = {}
+            index = 1
+            for inv in matchobj2:
+                # first is location/slot
+                # second is CARD::PN=value
+                # the remaining are key=value pairs, need to parse and create object for lookup
+                if (index == 1):
+                    location = inv
+                elif (index == 2):
+                    keyvalue = re.split('=',inv)
+                    value = keyvalue[1]
+                    key = re.split('::', keyvalue[0])
+                    inv_lookup[key[1]] = value
+                    
+                else:
+                    # parse key value pair, put in hash lookup
+                    keyvalue = re.split('=',inv)
+                    if(keyvalue[0]): # make sure its not empty
+                        inv_lookup[keyvalue[0]] = keyvalue[1]
+                index = index + 1
+                
+            # do something with inventory data
+            print ">>> " + location + " <<<"    
+            print inv_lookup
+            print "\n"
+               
         # need to figure out how to split this out into useful information
     #time.sleep(1)
     myons.disconnect()
