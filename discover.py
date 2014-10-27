@@ -52,7 +52,7 @@ def main(argv):
     myons.connect(hostname,port,username,password)
     #time.sleep(5)
     
-    # ons.get_neighbors
+    # ons.get_neighbors - returns an array of tuplets (IP Address, Name, Type)
     
     cmd_results = myons.send_command("RTRV-MAP-NETWORK:::124;")
     if(cmd_results):
@@ -61,7 +61,8 @@ def main(argv):
         matchobj = re.findall('\"(.*),(.*),(.*)\"',cmd_results)
         #print matchobj
         
-    # ons.get_inventory
+    # ons.get_inventory - returns an array of dictionary objects, each element of the
+    # array is an inventory line item for the site, divided into key,value pairs
         
     cmd_results = myons.send_command("RTRV-INV::ALL:125;")
     
@@ -101,6 +102,7 @@ def main(argv):
         print inv_lookup_all   
         # need to figure out how to split this out into useful information
     #time.sleep(1)
+    
     
     
     myons.disconnect()
