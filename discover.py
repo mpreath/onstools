@@ -51,18 +51,25 @@ def main(argv):
     myons = ons.ONS()
     myons.connect(hostname,port,username,password)
     #time.sleep(5)
+    
+    # ons.get_neighbors
+    
     cmd_results = myons.send_command("RTRV-MAP-NETWORK:::124;")
     if(cmd_results):
         # lets split the results
         #print cmd_results
         matchobj = re.findall('\"(.*),(.*),(.*)\"',cmd_results)
-        print matchobj
+        #print matchobj
+        
+    # ons.get_inventory
         
     cmd_results = myons.send_command("RTRV-INV::ALL:125;")
     
     if(cmd_results):
         #print cmd_results
         #print cmd_results
+        inv_lookup_all = {}
+        inv_index = 0
         matchobj = re.findall('\s+\"(.*)\"',cmd_results)
         for line in matchobj:
             matchobj2 = re.split(',', line)
@@ -73,7 +80,7 @@ def main(argv):
                 # second is CARD::PN=value
                 # the remaining are key=value pairs, need to parse and create object for lookup
                 if (index == 1):
-                    location = inv
+                    inv_lookup['LOCATION'] = inv
                 elif (index == 2):
                     keyvalue = re.split('=',inv)
                     value = keyvalue[1]
@@ -87,13 +94,15 @@ def main(argv):
                         inv_lookup[keyvalue[0]] = keyvalue[1]
                 index = index + 1
                 
-            # do something with inventory data
-            print ">>> " + location + " <<<"    
-            print inv_lookup
-            print "\n"
-               
+            # do something with inventory data, pack into a
+            inv_lookup_all[inv_index] = inv_lookup
+            inv_index = inv_index + 1
+        
+        print inv_lookup_all   
         # need to figure out how to split this out into useful information
     #time.sleep(1)
+    
+    
     myons.disconnect()
     
 
