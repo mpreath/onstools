@@ -28,22 +28,20 @@ class ONS:
     def connect(self,host,port,user,password):
         self.tn.open(host,port)
         # read until prompt
+        all_results = self.tn.read_until('>')
         cmd = "ACT-USER::" + user + ":123::" + password + ";"
-        # print cmd
         # execute ACT-USER TL1 command
         return(self.check_results(self.send_command(cmd)))
         
     @classmethod    
     def send_command(self,cmd):
+        
+        #print "******" + cmd + "*********"
         self.tn.write(cmd + "\n\n")
-        all_results = ""
-        cur_results = self.tn.read_some()
-        while (cur_results != ''):
-            #print cur_results
-            all_results += cur_results
-            cur_results = self.tn.read_some()
-    
+        # need to read to the > prompt and stop
+        all_results = self.tn.read_until('>')
         # check the results, return the response
+        #print all_results
         return self.check_results(all_results)
     
     @classmethod

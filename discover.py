@@ -17,7 +17,7 @@
 
 #!/usr/bin/python
 
-import sys, getopt, ons
+import sys, getopt, ons, time
 
 def main(argv):
        
@@ -44,9 +44,23 @@ def main(argv):
         elif opt in ("-p", "--password"):
             password = arg
         else:
-            print "nothing"
+            print 'discover.py -h hostname -u <username> -p <password>'
+            sys.exit(2) 
           
     # start script code here
+    myons = ons.ONS()
+    myons.connect(hostname,port,username,password)
+    #time.sleep(5)
+    cmd_results = myons.send_command("RTRV-MAP-NETWORK:::124;")
+    if(cmd_results):
+        print cmd_results
+    cmd_results = myons.send_command("RTRV-INV::ALL:125;")
+    if(cmd_results):
+        print cmd_results
+        # need to figure out how to split this out into useful information
+    #time.sleep(1)
+    myons.disconnect()
+    
 
 
 if __name__ == "__main__":
