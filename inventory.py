@@ -29,11 +29,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"h:u:p:",["hostname=","username=","password="])
     except getopt.GetoptError:
-        print 'discover.py -h hostname -u <username> -p <password>'
+        print 'inventory.py -h hostname -u <username> -p <password>'
         sys.exit(2)
     
     if (len(opts) != 3):
-        print 'discover.py -h hostname -u <username> -p <password>'
+        print 'inventory.py -h hostname -u <username> -p <password>'
         sys.exit(2)
     
     for opt, arg in opts:
@@ -44,22 +44,22 @@ def main(argv):
         elif opt in ("-p", "--password"):
             password = arg
         else:
-            print 'discover.py -h hostname -u <username> -p <password>'
+            print 'inventory.py -h hostname -u <username> -p <password>'
             sys.exit(2) 
           
+          
+    # need to be able to feed in the output of discover.py and capture inventory from
+    # the entire network
+    
+    
     # start script code here
     myons = ons.ONS()
     myons.connect(hostname,port,username,password)
     #time.sleep(5)
+        
+    inventory = myons.get_invenetory()
     
-    # ons.get_neighbors - returns an array of tuplets (IP Address, Name, Type)
-    
-    neighbors = myons.get_neighbors()
-    
-    #print matchobj
-    for neighbor in neighbors:
-        print("{: <20} {: <20} {: <20}".format(*neighbor))
-    
+    print inventory
     
     myons.disconnect()
     

@@ -45,6 +45,58 @@ class ONS:
         return self.check_results(all_results)
     
     @classmethod
+    def get_neighbors(self):
+        cmd_results = self.send_command("RTRV-MAP-NETWORK:::124;")
+        if(cmd_results):
+            # lets split the results
+            #print cmd_results
+            matchobj = re.findall('\"(.*),(.*),(.*)\"',cmd_results)
+            return matchobj
+        else:
+            return ''
+        
+    @classmethod
+    def get_inventory(self):
+        cmd_results = self.send_command("RTRV-INV::ALL:125;")
+
+        if(cmd_results):
+            #print cmd_results
+            #print cmd_results
+            inv_lookup_all = {}
+            inv_index = 0
+            matchobj = re.findall('\s+\"(.*)\"',cmd_results)
+            for line in matchobj:
+                matchobj2 = re.split(',', line)
+                inv_lookup = {}
+                index = 1
+                for inv in matchobj2:
+                    # first is location/slot
+                    # second is CARD::PN=value
+                    # the remaining are key=value pairs, need to parse and create object for lookup
+                    if (index == 1):
+                        inv_lookup['LOCATION'] = inv
+                    elif (index == 2):
+                        keyvalue = re.split('=',inv)
+                        value = keyvalue[1]
+                        key = re.split('::', keyvalue[0])
+                        inv_lookup[key[1]] = value
+
+                    else:
+                        # parse key value pair, put in hash lookup
+                        keyvalue = re.split('=',inv)
+                        if(keyvalue[0]): # make sure its not empty
+                            inv_lookup[keyvalue[0]] = keyvalue[1]
+                    index = index + 1
+
+                # do something with inventory data, pack into a
+                inv_lookup_all[inv_index] = inv_lookup
+                inv_index = inv_index + 1
+                
+            return inv_lookup_all
+        else:
+            return ''
+    
+    @classmethod
     def disconnect(self):
         self.tn.close()
     
