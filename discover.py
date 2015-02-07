@@ -51,7 +51,7 @@ def main(argv):
     myons = ons.ONS()
     myons.connect(hostname,port,username,password)
     #time.sleep(5)
-    
+
     # ons.get_neighbors - returns an array of tuplets (IP Address, Name, Type)
     
     neighbors = myons.get_neighbors()

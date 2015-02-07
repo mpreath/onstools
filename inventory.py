@@ -61,6 +61,9 @@ def main(argv):
     
     print inventory
     
+    # need to create a directory and create a CSV file with the inventory object
+    
+    
     myons.disconnect()
     
 
