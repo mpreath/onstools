@@ -1,21 +1,32 @@
-ONStools is a set of scripts designed to simplify the deployment and testing of Cisco's ONS 15454 SONET/DWDM platform. 
+ONStools is a python class and set of python scripts designed to simplify the deployment and testing of Cisco's ONS 15XXX SONET/DWDM platform. 
 
 These scripts are all written using the Python programming language. The scripts all make use of a common ONS class for communicating with the Cisco ONS platform. Each script also makes use of a common set of CLI parameters as follows:
 
 -s <shelf #>	If this is a multishelf system, specify the shelf the card is in.
 -l <slot #>	Specific the slot the card is in
+-h <hostname>   Hostname or IP address of ONS shelf
 -u <username>	Username used to access the ONS shelf
--d <password>	Password used to access the ONS shelf
+-p <password>	Password used to access the ONS shelf
 
 Script Listing
 --------------
-droptest.rb - a script for performing add/drop testing with Cisco's ROADM cards.
+discover.py - a script that displays all of the nodes connected to the node being logged into.
 
-droptest.rb 
+discover.py -h <ip address> -u <username> -p <password>
+-h				IP address of the ONs shelf being accessed.
+-u              Username used to access the ONS shelf.
+-p             	Password used to access the ONS shelf.
 
-xpconfig.rb - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
+inventory.py - a script that connects to all nodes in the network and collects inventories from them - storing them in seperate folders
 
-xpconfig.rb [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
+inventory.py -h <ip address> -u <username> -p <password> 
+-h				IP address of the ONs shelf being accessed.
+-u              Username used to access the ONS shelf.
+-p             	Password used to access the ONS shelf.
+
+xpconfig.pl - a script for setting SVLANs, protection, port configuration, and few other features on Cisco's XPonder card (20x1G and 2x10G versions)
+
+xpconfig.pl [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> <ip address>
 -p	This option indicates that the VLANs are protected.
 -m	This option indicates the XP card is the master for protection.
 -v <range>	Specify the range of VLANs to provision on the card.
@@ -27,7 +38,7 @@ xpconfig.rb [-p] [-m] -v <range> [-s <shelf #>] -l <slot #> -t <type> -u <userna
 -d <password>	Password used to access the ONS shelf.
 <ip address>	IP Address of the ONS shelf being accessed.
 
-dsxloop.rb - a script for setting up loopbacks on the DS1 and DS3 cards for testing purposes. 
+[not available] dsxloop.rb - a script for setting up loopbacks on the DS1 and DS3 cards for testing purposes. 
 
 dsxloop.rb [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> [-r] <ip address>
 -s <shelf #>	If this is a multishelf system, specify the shelf the card is in.
@@ -38,18 +49,7 @@ dsxloop.rb [-s <shelf #>] -l <slot #> -t <type> -u <username> -d <password> [-r]
 -r		Use to remove the loopback and put the ports to IS-AINS
 <ip address>	IP Address of the ONS shelf being accessed.
 
-discover.rb - a script that displays all of the nodes connected to the node being logged into.
 
-discover.rb -u <username> -d <password> <ip address>
--u		Username used to access the ONS shelf.
--d		Password used to access the ONS shelf.
-<ip address>	IP address of the ONs shelf being accessed.
-
-inventory.rb - a script that connects to all nodes in the network and collects inventories from them - storing them in seperate folders
-
-inventory.rb -u <username> -d <password> <ip address>
--u              Username used to access the ONS shelf.
--d              Password used to access the ONS shelf.
-<ip address>    IP address of the ONs shelf being accessed.
+   
 
 
